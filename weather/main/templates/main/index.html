@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="inner-container">
+        <div class="title">
+            <span>Weather App</span>
+        </div>
+        <div class="form-block">
+            <form method="GET">
+                <div class="content"><label for="city">Enter your city: </label></div>
+                <div class="content">
+                    <input type="text" name="city" class="simple-input" placeholder="city name">
+                </div>
+                <div class="content">
+                    <input class="btn" type="submit" value="Find">
+                </div>
+            </form>
+        </div>
+        {% if data %}
+        <div class="card-block">
+            <div class="card">
+                <div class="card__left">
+                    <div class="image-wrapper"><img src="https://openweathermap.org/img/wn/{{ data.weather.0.icon }}.png" alt="weather-icon"></div>
+                </div>
+                <div class="card__right">
+                    <div class="information">
+                        <div class="information__city">{{ data.name }}, {{ data.sys.country }}</div>
+                        <div class="information__description">{{ data.weather.0.description }}</div>
+                    </div>
+                    <div class="temperature">
+                        <div class="temperature__real">{{ data.main.temp|add:-273 }}°C</div>
+                        <div class="temperature__feels">
+                            {% if data.main.temp == data.main.feels_like %}
+                            and
+                            {% else %}
+                            but
+                            {% endif %} feels like {{ data.main.feels_like|add:-273 }}°C</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
