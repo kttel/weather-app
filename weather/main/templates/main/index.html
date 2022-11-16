@@ -7,6 +7,13 @@
             <span>Weather App</span>
         </div>
         <div class="form-block">
+            {% if messages %}
+                {% for message in messages %}
+                <div class="message-block">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
             <form method="GET">
                 <div class="content"><label for="city">Enter your city: </label></div>
                 <div class="content">
@@ -21,7 +28,7 @@
         <div class="card-block">
             <div class="card">
                 <div class="card__left">
-                    <div class="image-wrapper"><img src="https://openweathermap.org/img/wn/{{ data.weather.0.icon }}.png" alt="weather-icon"></div>
+                    <div class="image-wrapper"><img class="image__icon" src="https://openweathermap.org/img/wn/{{ data.weather.0.icon }}.png" alt="weather-icon"></div>
                 </div>
                 <div class="card__right">
                     <div class="information">
@@ -36,6 +43,14 @@
                             {% else %}
                             but
                             {% endif %} feels like {{ data.main.feels_like|add:-273 }}°C</div>
+                    </div>
+                    <div class="other__properties">
+                        <div class="humidity">
+                            Humidity: {{ data.main.humidity }}
+                        </div>
+                        <div class="pressure">
+                            Pressure: {{ data.main.pressure }}
+                        </div>
                     </div>
                 </div>
             </div>
