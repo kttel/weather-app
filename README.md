@@ -30,8 +30,11 @@ python manage.py runserver
 ```
 
 ## Screenshots
-![Page view](images/1.jpg)
-![Search result](images/2.jpg)
+
+<p align="center">
+  <img src="https://github.com/kttel/weather-app/blob/main/images/1.jpg?raw=true" alt="Page view"/>
+  <img src="https://github.com/kttel/weather-app/blob/main/images/2.jpg?raw=true" alt="Search result"/>
+</p>
 
 ## Contributing
 Various pull requests are welcome. Project can be updated in any time.
